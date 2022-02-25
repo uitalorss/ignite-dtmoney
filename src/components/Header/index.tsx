@@ -1,6 +1,7 @@
 import logoImg from '../../assets/logo.svg';
 import { Container, Content } from './styles';
 
+//Interface para poder trabalhar com as props
 interface HeaderProps {
   onOpenTransactionModal: () => void;
 }
