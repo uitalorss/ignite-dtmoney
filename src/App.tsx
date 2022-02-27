@@ -22,8 +22,8 @@ export function App() {
       <Header onOpenTransactionModal={handleOpenTransactionModal} /*Argumento que recebe a função que abre o modal, que o componente Header vai receber como prop*//>
       <Dashboard />
       <TransactionModal
-        isOpen={isTransactionModalOpen}
-        onRequestClose={handleCloseTransactionModal}
+        isOpen={isTransactionModalOpen} //argumento que verifica no componente de transação se o modal está ativo
+        onRequestClose={handleCloseTransactionModal} // argumento que passa a função responsável por fechar o modal
       />
       <GlobalStyle />
     </>
