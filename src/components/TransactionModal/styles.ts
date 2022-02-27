@@ -49,15 +49,16 @@ export const TransactionTypeContainer = styled.div`
     margin-left: 0.5rem;
   }
 `
-
+//Interface criada para receber a propriedade que verificará se o botão está ativo ou não.
 interface RadioBoxProps {
   isActive: boolean;
 }
 
-export const RadioBox = styled.button<RadioBoxProps>`
+// Botões do TransactionTypeContainer foram extraídos para virar outro componente, afim de receber props.
+export const RadioBox = styled.button<RadioBoxProps>` //no TypeScript é necessário mudar o generics para habilitar a interface criada.
     height: 3rem;
     margin: 1rem 0;
-    background: ${(props) => { return props.isActive ? '#d7d7d4' : ''}};
+    background: ${(props) => { return props.isActive ? '#d7d7d4' : ''}}; //Fazendo a mágica da troca de cores do botão acontecer.
 
     border: 1px solid #d7d7d7;
     border-radius: 0.25rem;
