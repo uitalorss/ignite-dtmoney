@@ -27,6 +27,13 @@ export const Container = styled.div`
       &:first-child{
         color: var(--text-title);
       }
+      &.income{
+        color: var(--green);
+      }
+
+      &.expense{
+        color: var(--red);
+      }
     }
   }
 `
