@@ -38,6 +38,7 @@ export function TransactionModal({ isOpen, onRequestClose }: TransactionModalPro
             type='button'
             onClick={() => setTransactionType('income')} //atribuindo o valor referido para a transição
             isActive={transactionType === 'income'} //Essa propriedade criada retorna um boolean verificando se o atributo transactionType é igual ao valor desejado. 
+            activeColor="green" // Essa propriedade atribui um nome para a cor do botao.
           >
             <img src={incomeImg} alt="icone-entrada" />
             <span>Entrada</span>
@@ -45,7 +46,8 @@ export function TransactionModal({ isOpen, onRequestClose }: TransactionModalPro
           <RadioBox
             type='button'
             onClick={() => setTransactionType('expense')} //atribuindo o valor referido para a transição
-            isActive={transactionType === 'expense'} //Essa propriedade criada retorna um boolean verificando se o atributo transactionType é igual ao valor desejado. 
+            isActive={transactionType === 'expense'} //Essa propriedade criada retorna um boolean verificando se o atributo transactionType é igual ao valor desejado.
+            activeColor="red"
           >
             <img src={expenseImg} alt="icone-saída" />
             <span>Saída</span>
