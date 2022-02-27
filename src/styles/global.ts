@@ -71,4 +71,15 @@ button{
   position: relative;
   border-radius: 0.25rem;
 }
+.react-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  &:hover{
+    filter: brightness(0.75);
+  }
+}
 `
