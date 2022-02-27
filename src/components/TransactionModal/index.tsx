@@ -1,6 +1,9 @@
 import Modal from 'react-modal';
-import { Container } from './styles';
+import { RadioBox, Container, TransactionTypeContainer, ButtonModal } from './styles';
 import  closeImg  from '../../assets/close.svg';
+import expenseImg from '../../assets/expense.svg';
+import incomeImg from '../../assets/income.svg';
+import { useState } from 'react';
 
 interface TransactionModalProps {
   isOpen: boolean;
@@ -8,6 +11,8 @@ interface TransactionModalProps {
 }
 
 export function TransactionModal({isOpen, onRequestClose}: TransactionModalProps){
+  const [transactionType, setTransactionType] = useState('income');
+
   return (
     <Modal 
     isOpen={isOpen} //argumento que verifica o estado do modal
@@ -20,7 +25,6 @@ export function TransactionModal({isOpen, onRequestClose}: TransactionModalProps
       </button>
       <Container>
         <h2>Cadastrar Transação</h2>
-
         <input 
           type="text" 
           placeholder='Título'  
@@ -29,11 +33,33 @@ export function TransactionModal({isOpen, onRequestClose}: TransactionModalProps
           type="number" 
           placeholder='Valor'  
         />
+        <TransactionTypeContainer>
+          <RadioBox
+            type='button'
+            onClick={() => setTransactionType('income')}
+            isActive={transactionType === 'income'}
+          >
+            <img src={incomeImg} alt="icone-entrada" />
+            <span>Entrada</span>
+          </RadioBox>
+          <RadioBox
+            type='button'
+            onClick={() => setTransactionType('expense')}
+            isActive={transactionType === 'expense'}
+          >
+            <img src={expenseImg} alt="icone-saída" />
+            <span>Saída</span>
+          </RadioBox>
+        </TransactionTypeContainer>
         <input 
           type="text" 
           placeholder='Categoria'  
         />
-        <button type="submit">Cadastrar</button>
+        <ButtonModal 
+          type="submit"
+        >
+          Cadastrar
+        </ButtonModal>
       </Container>
     </Modal>
   )
