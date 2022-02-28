@@ -79,6 +79,7 @@ export function TransactionModal({ isOpen, onRequestClose }: TransactionModalPro
         />
         <ButtonModal
           type="submit"
+
         >
           Cadastrar
         </ButtonModal>

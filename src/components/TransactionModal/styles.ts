@@ -49,6 +49,9 @@ export const TransactionTypeContainer = styled.div`
     margin-left: 0.5rem;
   }
 `
+
+
+
 //Interface criada para receber a propriedade que verificará se o botão está ativo ou não e a cor que ele receberá.
 interface RadioBoxProps {
   isActive: boolean;

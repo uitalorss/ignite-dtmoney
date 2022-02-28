@@ -3,6 +3,7 @@ import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { GlobalStyle } from "./styles/global";
 import { TransactionModal } from "./components/TransactionModal";
+import { TransactionsProvider } from "./TransactionsContext";
 
 export function App() {
   //criando o estado que vai controlar o modal
@@ -18,7 +19,7 @@ export function App() {
   }
 
   return (
-    <>
+    <TransactionsProvider>
       <Header onOpenTransactionModal={handleOpenTransactionModal} /*Argumento que recebe a função que abre o modal, que o componente Header vai receber como prop*//>
       <Dashboard />
       <TransactionModal
@@ -26,6 +27,6 @@ export function App() {
         onRequestClose={handleCloseTransactionModal} // argumento que passa a função responsável por fechar o modal
       />
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
