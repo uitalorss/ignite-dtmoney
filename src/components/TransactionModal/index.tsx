@@ -1,11 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext } from 'react';
 
 import Modal from 'react-modal';
 import { RadioBox, Container, TransactionTypeContainer, ButtonModal } from './styles';
 import closeImg from '../../assets/close.svg';
 import expenseImg from '../../assets/expense.svg';
 import incomeImg from '../../assets/income.svg';
-import { api } from '../../services/api';
+import { TransactionsContext } from '../../TransactionsContext';
 
 interface TransactionModalProps {
   isOpen: boolean;
@@ -18,13 +18,23 @@ export function TransactionModal({ isOpen, onRequestClose }: TransactionModalPro
   const [transactionType, setTransactionType] = useState(''); // criando o estado para guardar o valor da transação
   const [category, setCategory] = useState(''); // criando o estado para guardar o valor categoria
 
+  const { createTransaction } = useContext(TransactionsContext)
+  
   //função que cuida do envio dos dados para a api.
-  function handleNewTransaction(event: FormEvent){
+  async function handleNewTransaction(event: FormEvent){
     event.preventDefault();
-    const data = {
-      title, value, transactionType, category
-    };
-    api.post('/transactions', data);
+    await createTransaction({
+      title,
+      value, 
+      category, 
+      type: transactionType,
+    })
+
+    setTitle('');
+    setValue(0);
+    setTransactionType('');
+    setCategory('');
+    onRequestClose();
   }
 
   return (
@@ -79,7 +89,6 @@ export function TransactionModal({ isOpen, onRequestClose }: TransactionModalPro
         />
         <ButtonModal
           type="submit"
-
         >
           Cadastrar
         </ButtonModal>
